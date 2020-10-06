@@ -16,7 +16,9 @@ protocol BuilderProtocol {
 class Builder: BuilderProtocol {
     func showNewsListView(router: RouterProtocol) -> UIViewController {
         let view = NewsListViewController()
+        let parser = ParserService()
         let networkService = NetworkService()
+        networkService.parseService = parser
         let presenter = NewsListPresenter(view: view, network: networkService, router: router)
         view.presenter = presenter
         

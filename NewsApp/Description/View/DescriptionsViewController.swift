@@ -12,16 +12,18 @@ class DescriptionsViewController: UIViewController {
     var presenter: DescriptionViewPresenterProtocol!
     
     private var titleLabel: UILabel!
-    private var textView: UITextView!
+    private var descriptionTextView: UITextView!
     private var dateLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupView()
         
         setTitleLabel()
         setDateLabel()
         setTextView()
+        
+        presenter.showNewsDescription()
     }
     
     func setupView() {
@@ -55,20 +57,24 @@ class DescriptionsViewController: UIViewController {
     }
     
     private func setTextView() {
-        textView = UITextView()
-        textView.font = UIFont.italicSystemFont(ofSize: 14)
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(textView)
+        descriptionTextView = UITextView()
+        descriptionTextView.font = UIFont.italicSystemFont(ofSize: 14)
+        descriptionTextView.textAlignment = .justified
+        descriptionTextView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(descriptionTextView)
         
-        textView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 3).isActive = true
-        textView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 8).isActive = true
-        textView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -8).isActive = true
-        textView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -8).isActive = true
+        descriptionTextView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 3).isActive = true
+        descriptionTextView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 8).isActive = true
+        descriptionTextView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -8).isActive = true
+        descriptionTextView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -8).isActive = true
     }
 }
 
 extension DescriptionsViewController: DescriptionViewProtocol {
-    func setData(data: NewsModel?) {
-        print(data)
+    
+    func setData(data: NewsModel) {
+        titleLabel.text = data.title
+        dateLabel.text = data.date
+        descriptionTextView.text = data.description
     }
 }

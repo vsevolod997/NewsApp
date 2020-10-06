@@ -16,11 +16,11 @@ protocol NewsListPresenterProtocol: class {
     var newsList: [NewsModel]? {get set}
     init(view: NewsListViewProtocol, network: NetworkServiceProtocol, router: RouterProtocol)
     
-    func showView()
-    func selectNew(news: NewsModel?)
+    func loadNews()
+    func selectNew(index: IndexPath)
 }
 
-
+//MARK: - NewsListPresenterProtocol
 class NewsListPresenter: NewsListPresenterProtocol {
     
     var newsList: [NewsModel]?
@@ -35,13 +35,20 @@ class NewsListPresenter: NewsListPresenterProtocol {
         self.router = router
     }
     
-    func showView() {
-       // print(#func)
+    func loadNews() {
+        networkService?.getData(stringUrl: "https://www.banki.ru/xml/news.rss", complition: { [weak self] (news, error) in
+            guard let self = self else { return }
+            if let err = error {
+                self.view?.setError(mess: err.localizedDescription)
+            } else {
+                guard let listNews = news else { return }
+                self.newsList = listNews
+                self.view?.setData()
+            }
+        })
     }
     
-    func selectNew(news: NewsModel?) {
-        router?.showDetailNews(person: news)
+    func selectNew(index: IndexPath) {
+        router?.showDetailNews(news: newsList?[index.row])
     }
-    
-    
 }

@@ -14,7 +14,7 @@ protocol RouterMain {
 
 protocol RouterProtocol: RouterMain {
     func initialViewController()
-    func showDetailNews(person: NewsModel?)
+    func showDetailNews(news: NewsModel?)
     func popToRoot()
 }
 
@@ -34,9 +34,9 @@ class Router: RouterProtocol {
         }
     }
     
-    func showDetailNews(person: NewsModel?) {
+    func showDetailNews(news: NewsModel?) {
         if let navController = navigationController {
-            guard let detailVC = builder?.showDetailView(news: person, router: self) else { return }
+            guard let detailVC = builder?.showDetailView(news: news, router: self) else { return }
             navController.pushViewController(detailVC, animated: true)
         }
     }

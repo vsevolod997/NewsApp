@@ -8,7 +8,7 @@
 import Foundation
 
 protocol DescriptionViewProtocol: class {
-    func setData(data: NewsModel?)
+    func setData(data: NewsModel)
 }
 
 protocol DescriptionViewPresenterProtocol: class {
@@ -26,11 +26,11 @@ class DescriptionViewPresenter: DescriptionViewPresenterProtocol {
     required init(view: DescriptionViewProtocol, news: NewsModel?, router: RouterProtocol) {
         self.news = news
         self.router = router
-        self.router = router
+        self.view = view
     }
     
     func showNewsDescription() {
-        print(news)
+        view?.setData(data: news ?? NewsModel(title: "Не удалось отобразить новость", description: nil, date: nil, isVisible: true))
     }
     
     func backToList() {
