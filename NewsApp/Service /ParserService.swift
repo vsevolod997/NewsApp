@@ -24,6 +24,7 @@ class ParserService: NSObject, ParserServiceProtocol {
     
     
     func parseXMLtoString(xmlData: Data) {
+        newsList = []
         let parser = XMLParser(data: xmlData)
         parser.delegate = self
         parser.parse()
@@ -57,7 +58,7 @@ extension ParserService: XMLParserDelegate {
         case "pubDate":
             date = foundString
         case "item":
-            let news = NewsModel(title: title, description: desc, date: date, isVisible: false)
+            let news = NewsModel(title: title, description: desc, date: date, isSee: false)
             newsList.append(news)
         default:
             break

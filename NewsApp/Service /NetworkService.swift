@@ -14,8 +14,7 @@ protocol NetworkServiceProtocol: class {
 class NetworkService: NSObject, NetworkServiceProtocol {
     
     var parseService: ParserServiceProtocol?
-    
-    //
+
     func getData(stringUrl: String, complition: @escaping ([NewsModel]?, Error?) -> ()) {
         self.parseService?.callback = { result in
             complition(result, nil)

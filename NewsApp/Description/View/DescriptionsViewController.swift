@@ -18,7 +18,6 @@ class DescriptionsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        
         setTitleLabel()
         setDateLabel()
         setTextView()
@@ -26,7 +25,7 @@ class DescriptionsViewController: UIViewController {
         presenter.showNewsDescription()
     }
     
-    func setupView() {
+    private func setupView() {
         self.view.backgroundColor = .systemBackground
         self.navigationItem.title = "Детальная Информация"
     }
@@ -38,7 +37,7 @@ class DescriptionsViewController: UIViewController {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(titleLabel)
         
-        titleLabel.topAnchor.constraint(equalToSystemSpacingBelow: self.view.topAnchor, multiplier: 9).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor , constant: 0 ).isActive = true
         titleLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 8).isActive = true
         titleLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -8).isActive = true
     }
@@ -60,16 +59,18 @@ class DescriptionsViewController: UIViewController {
         descriptionTextView = UITextView()
         descriptionTextView.font = UIFont.italicSystemFont(ofSize: 14)
         descriptionTextView.textAlignment = .justified
+        descriptionTextView.isEditable = false
         descriptionTextView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(descriptionTextView)
         
         descriptionTextView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 3).isActive = true
         descriptionTextView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 8).isActive = true
         descriptionTextView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -8).isActive = true
-        descriptionTextView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -8).isActive = true
+        descriptionTextView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0).isActive = true
     }
 }
 
+//MARK: - DescriptionViewProtocol
 extension DescriptionsViewController: DescriptionViewProtocol {
     
     func setData(data: NewsModel) {

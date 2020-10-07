@@ -9,8 +9,8 @@ import UIKit
 
 class NewsTableViewCell: UITableViewCell {
 
-    var titleLabel: UILabel!
-    var dateLabel: UILabel!
+    private var titleLabel: UILabel!
+    private var dateLabel: UILabel!
     
     public var news: NewsModel! {
         didSet {
@@ -22,9 +22,9 @@ class NewsTableViewCell: UITableViewCell {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        subviews.forEach { subview in
-            subview.removeFromSuperview()
-        }
+        backgroundColor = .systemBackground
+        titleLabel.removeFromSuperview()
+        dateLabel.removeFromSuperview()
     }
     
     override func awakeFromNib() {
@@ -33,12 +33,14 @@ class NewsTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        backgroundColor = .secondarySystemBackground
         // Configure the view for the selected state
     }
     
     private func setData() {
         guard let news = self.news else { return }
+        if news.isSee {
+            backgroundColor = .lightGray
+        }
         titleLabel.text = news.title
         dateLabel.text = news.date
     }

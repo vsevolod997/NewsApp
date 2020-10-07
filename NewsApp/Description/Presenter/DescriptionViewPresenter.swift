@@ -30,7 +30,7 @@ class DescriptionViewPresenter: DescriptionViewPresenterProtocol {
     }
     
     func showNewsDescription() {
-        view?.setData(data: news ?? NewsModel(title: "Не удалось отобразить новость", description: nil, date: nil, isVisible: true))
+        view?.setData(data: news ?? NewsModel(title: "Не удалось отобразить новость", description: nil, date: nil, isSee: true))
     }
     
     func backToList() {

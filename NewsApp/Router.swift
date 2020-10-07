@@ -16,9 +16,11 @@ protocol RouterProtocol: RouterMain {
     func initialViewController()
     func showDetailNews(news: NewsModel?)
     func popToRoot()
+    func showSelectAction()
 }
 
 class Router: RouterProtocol {
+    
     var navigationController: UINavigationController?
     var builder: BuilderProtocol?
     
@@ -45,4 +47,11 @@ class Router: RouterProtocol {
         navigationController?.popViewController(animated: true)
     }
     
+    func showSelectAction() {
+        if let navController = navigationController {
+            guard let rootVC = navController.topViewController as? NewsListViewController else { return }
+            guard let actionView = builder?.showSelectAction(router: self, rootVC: rootVC) else { return }
+            rootVC.present(actionView, animated: true, completion: nil)
+        }
+    }
 }
