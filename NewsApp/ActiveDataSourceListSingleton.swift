@@ -1,5 +1,5 @@
 //
-//  ActivListDataSource.swift
+//  ActiveListDataSource.swift
 //  NewsApp
 //
 //  Created by Всеволод Андрющенко on 07.10.2020.

@@ -60,6 +60,7 @@ class NewsSourceView: UIButton {
     private func setIco() {
         icoImage = UIImageView()
         icoImage.contentMode = .scaleAspectFill
+        icoImage.tintColor = .systemGray
         icoImage.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(icoImage)
         

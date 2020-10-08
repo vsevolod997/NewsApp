@@ -37,15 +37,33 @@ class Builder: BuilderProtocol {
     
     func showSelectAction(router: RouterProtocol, rootVC: UIViewController) -> UIAlertController {
         guard let newsListVC = rootVC as? NewsListViewController else { return UIAlertController() }
-        let alert = SelectDataSourceAlertController(title: nil, message: "Выберите источник данных", preferredStyle: .actionSheet)
+        let alertView = SelectDataSourceAlertController(title: nil, message: "Выберите источник данных", preferredStyle: .actionSheet)
+        var value1 = ActiveListDataSourceSingleton.selectedObject.firstDataSource
+        var value2 = ActiveListDataSourceSingleton.selectedObject.secondDataSource
+        
+        let alertPresenter = SelectDataSourceAlertPresenter(view: alertView, dataOne: value1, dataTwo: value2)
+        alertView.presenter = alertPresenter
+        
+        alertPresenter.changedOne = { newFirstValue in
+            value1 = newFirstValue
+        }
+        
+        alertPresenter.changedTwo = { newSecondValue in
+            value2 = newSecondValue
+        }
+        
         let actionCancel = UIAlertAction(title: "Отмена", style: .cancel)
         let actionReload = UIAlertAction(title: "Применить", style: .default) { action in
+            
+        ActiveListDataSourceSingleton.selectedObject.firstDataSource = value1
+        ActiveListDataSourceSingleton.selectedObject.secondDataSource = value2
+        
             newsListVC.presenter.loadNews()
         }
         
-        alert.addAction(actionCancel)
-        alert.addAction(actionReload)
+        alertView.addAction(actionCancel)
+        alertView.addAction(actionReload)
         
-        return alert
+        return alertView
     }
 }

@@ -10,7 +10,8 @@
 		4220918A252DA8E700665242 /* NewsSourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42209189252DA8E700665242 /* NewsSourceView.swift */; };
 		42209193252DAC9400665242 /* NewsDataSourceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42209192252DAC9400665242 /* NewsDataSourceModel.swift */; };
 		42209196252DBD0D00665242 /* SelectDataSourceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42209195252DBD0D00665242 /* SelectDataSourceController.swift */; };
-		4220919A252DE3B900665242 /* ActivDataSourceListSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42209199252DE3B900665242 /* ActivDataSourceListSingleton.swift */; };
+		4220919A252DE3B900665242 /* ActiveDataSourceListSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42209199252DE3B900665242 /* ActiveDataSourceListSingleton.swift */; };
+		422091B6252EE87E00665242 /* SelectDataSourceAlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422091B5252EE87E00665242 /* SelectDataSourceAlertPresenter.swift */; };
 		4238939D252C7DF8007479F3 /* ParserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4238939C252C7DF8007479F3 /* ParserService.swift */; };
 		423893A3252C9EDA007479F3 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423893A2252C9EDA007479F3 /* NewsTableViewCell.swift */; };
 		423C66A7252B0C380087B00D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423C66A6252B0C380087B00D /* AppDelegate.swift */; };
@@ -33,7 +34,8 @@
 		42209189252DA8E700665242 /* NewsSourceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSourceView.swift; sourceTree = "<group>"; };
 		42209192252DAC9400665242 /* NewsDataSourceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDataSourceModel.swift; sourceTree = "<group>"; };
 		42209195252DBD0D00665242 /* SelectDataSourceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDataSourceController.swift; sourceTree = "<group>"; };
-		42209199252DE3B900665242 /* ActivDataSourceListSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivDataSourceListSingleton.swift; sourceTree = "<group>"; };
+		42209199252DE3B900665242 /* ActiveDataSourceListSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveDataSourceListSingleton.swift; sourceTree = "<group>"; };
+		422091B5252EE87E00665242 /* SelectDataSourceAlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDataSourceAlertPresenter.swift; sourceTree = "<group>"; };
 		4238939C252C7DF8007479F3 /* ParserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserService.swift; sourceTree = "<group>"; };
 		423893A2252C9EDA007479F3 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		423C66A3252B0C380087B00D /* NewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,6 +79,7 @@
 		4220919D252DE58400665242 /* SelectionAlert */ = {
 			isa = PBXGroup;
 			children = (
+				422091B4252EE85500665242 /* Presenter */,
 				4220919F252DE5FE00665242 /* View */,
 				4220919E252DE5F000665242 /* Model */,
 			);
@@ -109,6 +112,14 @@
 			path = TableViewCell;
 			sourceTree = "<group>";
 		};
+		422091B4252EE85500665242 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				422091B5252EE87E00665242 /* SelectDataSourceAlertPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		423C669A252B0C380087B00D = {
 			isa = PBXGroup;
 			children = (
@@ -130,7 +141,7 @@
 			children = (
 				423C66CB252B14320087B00D /* Builder.swift */,
 				423C66D0252B14480087B00D /* Router.swift */,
-				42209199252DE3B900665242 /* ActivDataSourceListSingleton.swift */,
+				42209199252DE3B900665242 /* ActiveDataSourceListSingleton.swift */,
 				42209187252DA37800665242 /* Service  */,
 				4220919D252DE58400665242 /* SelectionAlert */,
 				423C66C3252B134A0087B00D /* Description */,
@@ -277,13 +288,14 @@
 			files = (
 				423C66DE252B47490087B00D /* NetworkService.swift in Sources */,
 				423C66D8252B44FD0087B00D /* DescriptionViewPresenter.swift in Sources */,
+				422091B6252EE87E00665242 /* SelectDataSourceAlertPresenter.swift in Sources */,
 				42209193252DAC9400665242 /* NewsDataSourceModel.swift in Sources */,
 				423C66AB252B0C380087B00D /* NewsListViewController.swift in Sources */,
 				42209196252DBD0D00665242 /* SelectDataSourceController.swift in Sources */,
 				423C66A7252B0C380087B00D /* AppDelegate.swift in Sources */,
 				423893A3252C9EDA007479F3 /* NewsTableViewCell.swift in Sources */,
 				423C66D4252B16540087B00D /* NewsModel.swift in Sources */,
-				4220919A252DE3B900665242 /* ActivDataSourceListSingleton.swift in Sources */,
+				4220919A252DE3B900665242 /* ActiveDataSourceListSingleton.swift in Sources */,
 				423C66E4252B83270087B00D /* StatusTableViewCell.swift in Sources */,
 				423C66BD252B0CA20087B00D /* DescriptionsViewController.swift in Sources */,
 				4220918A252DA8E700665242 /* NewsSourceView.swift in Sources */,
